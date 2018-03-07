@@ -1,0 +1,34 @@
+<div>
+  <table class="table table-bordered">
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Comments</th>
+      <th>Like</th>
+    </tr>
+
+    <tr *ngFor="let post of posts">
+      <td>{{post.title}}</td>
+      <td>{{post.description}}</td>
+      <td>
+        <button class="btn btn-primary" (click)="showComments(post)">Comments</button>
+        <div *ngIf="post.showFlag">
+          <ul>
+            <li>{{post.comment.user}}</li>
+            <li>{{post.comment.message}}</li>
+          </ul>
+        </div>
+        <button class="btn btn-primary" (click)="showAddComment(post)">Add Comment</button>
+        <div class="form-group" *ngIf="post.showAddCommentFlag">
+          <label for="message">Comment: </label>
+          <input type="text" class="form-control" name="message" placeholder="Comment" [(ngModel)]="comment.message"/>
+          <button class="btn btn-primary" (click)="AddComment(post)">Submit</button>
+        </div>
+      </td>
+      <td>
+        <button class="btn btn-link">{{post.like}}</button>
+        <button class="btn btn-info" (click)="increaseLike(post)">Like</button>
+      </td>
+    </tr>
+  </table>
+</div>
