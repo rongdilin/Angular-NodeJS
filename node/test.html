@@ -1,0 +1,58 @@
+<style>
+    draw-rectangle{
+        display: inline-block;
+        
+    }
+    draw-rectangle div{
+        width: 50px;
+        height: 50px;
+        border: 1px;
+        padding: 50px;
+    }
+    #close_btn{
+        float:right;
+        position: relative;
+        top: 0px;
+        right: 0px;
+        width:100px;
+        height:100px;
+        background:red;
+    }
+    
+</style>
+
+<script>
+    var app = angular.module("myapp", []);
+    
+    app.directive('drawRectangle', function($compile){
+        return{
+        templateUrl:'test.html',
+        restrict:'E',
+        scope:{
+            'close': '='
+        }, 
+        link: function(scope, elem, attrs){
+            attrs.cntr
+            scope.desp = "This is rectangle";
+            scope.isHidden = true;
+            scope.hideRectangle = function() {
+                scope.isHidden = false;
+            }
+        }
+    }});
+
+    
+</script>
+
+<div ng-app="myapp">
+    <button id="close_btn">x</button>
+           
+    <draw-rectangle cntr=5 ng-hide="isHidden" close="hideRectangle()">
+        <div ng-repeat="num in cntr">
+            <a href class="close" ng-click="close()"></a>
+
+            <h4>{{desp}} num.</h4>
+        </div>
+    </draw-rectangle>
+    
+</div>

@@ -1,0 +1,18 @@
+<h1>User page</h1>
+
+
+<table border="1" style="border-collapse: collapse" cellpadding="5" cellspacing="5">
+    <tr>
+        <th>Username</th>
+        <th>Location</th>
+        <th>Company</th>
+        <th>Phone</th>
+    </tr>
+
+    <tr ng-repeat="user in users">
+        <td>{{user.username}}</td>
+        <td>{{user.location}}</td>
+        <td>{{user.org}}</td>
+        <td>{{user.phone}}</td>
+    </tr>
+</table>

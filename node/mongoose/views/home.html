@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>NodeJS - Template</title>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <!-- <h1>Hello {{username}}!!!</h1>
+    <ul>
+        {% for company in companies %}
+        <li>{{company}}</li>
+        {% endfor %}
+    </ul> -->
+    <div id="cntr"></div>
+    <input type="text" id="txtbx" />
+    <button id="btn">Send</button>
+    <script>
+        var socket = io.connect();// make connection with the server
+        socket.on('msg_to_client', function(data){
+            document.getElementById('cntr').innerHTML += data + "<br />";
+        });
+        document.getElementById('btn').addEventListener('click', function(){
+            socket.emit('msg_to_server', document.getElementById('txtbx').value);
+        });
+    </script>
+
+
+        
+</body>
+
+</html>
